@@ -183,8 +183,6 @@ class HackerUser(User, db.Model):
     created_at = db.Column(db.DateTime)
     date_of_birth = db.Column(db.Date)
     gender = db.Column(db.String(forms.get_length("gender")))
-    graduation = db.Column(db.Date)
-    major = db.Column(db.String(forms.get_length("major")))
     school_id = db.Column(db.INTEGER)
     school_name = db.Column(db.String(forms.get_length("school_name")))
     special_needs = db.Column(db.Text)

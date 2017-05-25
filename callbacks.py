@@ -25,15 +25,7 @@ def say_hello(user):
 # Send email.  When a new user is created, send them a friendly welcome email
 @triggers.new_user
 def send_welcome(user):
-    response = sp.transmission.send(
-        recipients=[ user.email ],
-        track_opens=True,
-        track_clicks=True,
-        template='signup-confirm',
-        substitution_data={
-            'name': user.first_name
-        }
-    )
+    # FIXME
     print(response)
 
 # Feed the new user into slack

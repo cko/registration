@@ -243,26 +243,6 @@ master = {
         "editable": True,
         "always": False
     },
-    "graduation": {
-        "friendly_name": "Graduation Date",
-        "placeholder": "05-01-2020",
-        "help_text": "",
-        "formtype": "date",
-        "max_length": -1,
-        "required": True,
-        "editable": True,
-        "always": False
-    },
-    "major": {
-        "friendly_name": "Major",
-        "placeholder": "Electrical Engineering and Sociology",
-        "help_text": "",
-        "formtype": "text",
-        "max_length": 128,
-        "required": False,
-        "editable": True,
-        "always": False
-    },
     "phone_number": {
         "friendly_name": "Phone Number",
         "placeholder": "+1 555 555 5555",
@@ -333,9 +313,7 @@ mlh_settable_keys = [
     "email", 
     "first_name", 
     "last_name", 
-    "gender", 
-    "graduation", 
-    "major", 
+    "gender",  
     "phone_number",
     "school_id",
     "school_name", 
@@ -357,7 +335,6 @@ hacker_form = collections.OrderedDict([
     ("background", master['background']),
     ("github", master['github']),
     ("website", master['website']),
-    ("graduation", master["graduation"]),
     ("team_name", master['team_name']),
     ("needs_reimbursement", master['needs_reimbursement']),
     ("preferred_travel_method", master['preferred_travel_method']),
@@ -374,7 +351,6 @@ mlh_form = collections.OrderedDict([
     ("first_name", master["first_name"]),
     ("last_name", master["last_name"]),
     ("gender", master["gender"]),
-    ("major",master["major"]),
     ("phone_number", master["phone_number"]),
     ("school_name", master["school_name"]),
     ("date_of_birth", master["date_of_birth"]),
