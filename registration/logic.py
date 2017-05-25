@@ -68,4 +68,4 @@ def show_rsvp_form(user):
         
         return True
 
-    return False
+    return True

@@ -179,7 +179,7 @@ class HackerUser(User, db.Model):
     mlh_friendly_dict = forms.mlh_form
 
     # Things MLH knows - these keys are necessary for the app to function
-    mlh_id = db.Column(db.INTEGER, unique=True)
+    mlh_id = db.Column(db.String(20), unique=True)
     created_at = db.Column(db.DateTime)
     date_of_birth = db.Column(db.Date)
     gender = db.Column(db.String(forms.get_length("gender")))
@@ -291,7 +291,7 @@ class HackerUser(User, db.Model):
             If those fail, create a new user
             """
             email = user_dict["email"]
-            mlh_id = user_dict["mlh_id"]
+            mlh_id = user_dict["login"]
             user = None
 
             if not user:
@@ -307,14 +307,17 @@ class HackerUser(User, db.Model):
                 # Else we must create another.
                 user = HackerUser(email)
                 db.session.add(user)
-
+                print (str(user.mlh_settable_keys))			
                 for key, value in user_dict.items():
+                    print (key)
                     if key in user.mlh_settable_keys:
                         setattr(user, key, value)
-                    else:
+                    #else:
                         # MLH tried to set a key it shouldn't have - panic
-                        raise KeyError("MLH Tried to set a key it shouldn't have.")
+                        #raise KeyError("MLH Tried to set a key it shouldn't have.")
 
+                setattr(user, 'mlh_id', 'cko')
+                setattr(user, 'first_name', 'Christine')
                 db.session.commit()
                 user.user_created()
             
