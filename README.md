@@ -38,7 +38,7 @@ sudo apt-get install python3 python3-dev python-dev libpq-dev virtualenv postgre
 
 1. after installing postgres, log in as the postgres user. `sudo su postgres && psql`
 2. Create a user for the application. `CREATE ROLE registration WITH PASSWORD {passwd} CREATEDB;`
-3. Create a database for that role. `CREATE DATBASE registration OWNER registration`;
+3. Create a database for that role. `CREATE DATABASE registration OWNER registration`;
 4. Edit `/etc/postgres/{version}/main/pg_hba.conf` : add the line `local   all   registration   md5`
 5. Restart postgres.  `sudo service postgresql restart`
 
@@ -49,7 +49,7 @@ sudo apt-get install python3 python3-dev python-dev libpq-dev virtualenv postgre
 3. Activate `source bin/activate`
 4. run a development install `pip install -e .`
 5. Move settings_example.py to settings.py and fill out all the fields 
-6. After the database creation, you'll need to build the schema.  `python registration.py migrate` will do this for you.
+6. After the database creation, you'll need to build the schema.  `python runserver.py migrate` will do this for you.
 
 To run in prod, it's highly recommended that you sit flask behind nginx using uwsgi. 
 
