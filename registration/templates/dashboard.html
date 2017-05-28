@@ -5,13 +5,6 @@
 
         <h1>Status - {{ status['friendly_name'] }}</h1>
         <p>{{ status['help_text'] }}</p>
-
-        <h1>Team</h1>
-        <ul>
-        {% for teammate in teammates %}
-            <li>{{ teammate }}</li>
-        {% endfor %}
-        </ul>
     </div>
-  
+
 {% endblock %}

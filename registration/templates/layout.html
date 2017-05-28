@@ -15,25 +15,22 @@
       {% endfor %}
     </section>
 
-    <header class="header">
+    <nav>
       <!-- This section can be re-skinned for your hackathon -->
       <div class="sky"></div>
       {% if current_user.is_authenticated %}
-      <div class="container">
-        <div id="navbar">
-          <nav>
+      <div class="nav-wrapper">
+        <ul id="navbar" class="right hide-on-med-and-down">
             <a href="/apply">Apply</a>
-            <a href="/dashboard">Dashboard</a>
             <a href="/logout">Log Out</a>
-            <a href="https://hacknc.com">Home</a>
+            <a href="http://nixcon2017.org">Home</a>
             {% if current_user.is_admin %}
             <a href="/admin">Admin</a>
             {% endif %}
-          </nav>
-        </div>
+        </ul>
       </div>
       {% endif %}
-    </header>
+    </nav>
 
     <section class="content">
       {% block body %}{% endblock %}

@@ -8,8 +8,7 @@ from .. import app, secure_store, settings, forms, utilities, login_required_or_
 def dashboard():
     return render_template(
         "dashboard.html",
-        status=utilities.get_by_code(current_user.visible_status, forms.StatusCodes),
-        teammates=current_user.get_teammates()
+        status=utilities.get_by_code(current_user.visible_status, forms.StatusCodes)
     )
 
 @app.route("/apply", methods=["GET", "POST"])
