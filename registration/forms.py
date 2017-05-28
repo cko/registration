@@ -16,7 +16,7 @@ StatusCodes = {
         # The database code
         "code": "o",
         # The name to show the user
-        "friendly_name": "Open", 
+        "friendly_name": "Open",
         # Some help text about what it means
         "help_text": "Applications are still open!  Make any changes you want - we'll submit for you when they close.",
         # Whether this state allows the user to edit their application
@@ -28,7 +28,7 @@ StatusCodes = {
         "help_text": "Your application has been submitted!  We're still reviewing, so check back often!",
         "editable_state": False
     },
-    'a': {    
+    'a': {
         "code": "a",
         "friendly_name": "Accepted",
         "help_text": "Congrats - You're accepted!  Keep an eye on your email for further actions.",
@@ -68,10 +68,10 @@ StatusCodes = {
 
 # Master list of form items.  Put any form items for any objects in here.
 master = {
-    
-    # 
+
+    #
     # Custom form items
-    # 
+    #
 
     "what_to_learn": {
         # The field name to show the user
@@ -119,48 +119,18 @@ master = {
         "editable": True,
         "pattern": ".*"
     },
-    # "mac_address": {
-    #     "friendly_name" : "MAC Address",
-    #     "help_text" : "The MAC accress of your laptop's wireless card.  We need this to connect you to our WIFI.",
-    #     "formtype": "text",
-    #     "always": True,
-    #     "max_length": 20,
-    #     "required": False,
-    #     "editable": True,
-    #     "pattern": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$"
-    # },
-    "team_name": {
-        "friendly_name": "Team Name",
-        "help_text": "Create a team by giving us a team name. If your friends enter the same group name, they'll show up on your dashboard. If you don't have a team in mind, do not fear! We will have a session to help you find teammates.",
-        "placeholder": "Teams can have a max of 4 members",
-        "formtype": "text",
-        "always": True,
-        "max_length": 32,
-        "required": False,
-        "editable": True,
-        "pattern": "^.*$"
-    },
-    "accepts_mlh_code": {
-        "friendly_name":"MLH Code of Conduct",
-        "help_text": Markup("I accept the <a href='https://static.mlh.io/docs/mlh-code-of-conduct.pdf'>MLH code of conduct</a>."),
+    "attends_conference": {
+        "friendly_name":"Conference Days",
+        "help_text": Markup("I would like to attend the conference days (Sat & Sun)."),
         "formtype": "checkbox",
         "max_length": -1,
         "required": True,
         "editable": True,
         "always": False
     },
-    # "accepts_mlh_release": {
-    #     "friendly_name":"MLH Data Sharing Notice",
-    #     "help_text": Markup("HackNC may share certain information with MLH in accordance with the <a href='https://mlh.io/privacy'>MLH Privacy Policy</a>."),
-    #     "formtype": "checkbox",
-    #     "max_length": -1,
-    #     "required": True,
-    #     "editable": True,
-    #     "always": False
-    # },
-    "accepts_mlh_release":{
+    "attends_hackathon":{
         "friendly_name": "",
-        "help_text": Markup("We participate in Major League Hacking (MLH) as a MLH Member Event. You authorize us to share certain application/registration information for event administration, ranking, MLH administration, pre and post-event informational e-mails, and occasional messages about hackathons in line with the <a href='https://mlh.io/privacy'>MLH Privacy Policy</a>."),
+        "help_text": Markup("I would like to attend the hackathon"),
         "formtype": "info",
         "max_length": -1,
         "required": False,
@@ -199,10 +169,10 @@ master = {
         ]
     },
 
-    # 
+    #
     # MLH form items
-    # 
-    
+    #
+
     "email": {
         "friendly_name": "Email",
         "help_text": "",
@@ -213,62 +183,12 @@ master = {
         "placeholder": "hacker@school.edu",
         "always": False
     },
-    "first_name": {
-        "friendly_name": "First Name",
-        "placeholder": "Susie",
+    "name": {
+        "friendly_name": "Your Name",
+        "placeholder": "Susie Hacker",
         "help_text": "",
         "formtype": "text",
         "max_length": 128,
-        "required": True,
-        "editable": True,
-        "always": False
-    },
-    "last_name": {
-        "friendly_name": "Last Name",
-        "placeholder": "Hacker",
-        "help_text": "",
-        "formtype": "text",
-        "max_length": 128,
-        "required": True,
-        "editable": True,
-        "always": False
-    },
-    "gender": {
-        "friendly_name": "Gender",
-        "placeholder": "Non-Binary",
-        "help_text": "",
-        "formtype": "text",
-        "max_length": 64,
-        "required": False,
-        "editable": True,
-        "always": False
-    },
-    "phone_number": {
-        "friendly_name": "Phone Number",
-        "placeholder": "+1 555 555 5555",
-        "help_text": "",
-        "formtype": "+tel",
-        "max_length": 32,
-        "required": False,
-        "editable": True,
-        "always": False
-    },
-    "school_name": {
-        "friendly_name": "School",
-        "placeholder": "University of North Carolina at Chapel Hill",
-        "help_text": "",
-        "formtype": "text",
-        "max_length": 256,
-        "required": True,
-        "editable": True,
-        "always": False
-    },
-    "date_of_birth": {
-        "friendly_name": "Date of Birth",
-        "placeholder": "01-01-1998",
-        "help_text": "",
-        "formtype": "date",
-        "max_length": -1,
         "required": True,
         "editable": True,
         "always": False
@@ -282,7 +202,7 @@ master = {
         "required": True,
         "editable": True,
         "always": False
-    }, 
+    },
     "special_needs": {
         "friendly_name": "Special Needs",
         "placeholder": "Anything else you might need while you're here?",
@@ -295,7 +215,7 @@ master = {
     },
     "dietary_restrictions": {
         "friendly_name": "Dietary Restrictions",
-        "placeholder": "Vegan, Vegetarian, Halal or Kosher?",
+        "placeholder": "Vegan or Vegetarian?",
         "help_text": "",
         "formtype": "text",
         "max_length": -1,
@@ -307,17 +227,12 @@ master = {
 
 # The list of keys MLH is allowed to set - don't touch this
 mlh_settable_keys = [
-    "mlh_id", 
-    "created_at", 
-    "date_of_birth", 
-    "email", 
-    "first_name", 
-    "last_name", 
-    "gender",  
-    "phone_number",
-    "school_id",
-    "school_name", 
-    "shirt_size", 
+    "github_id",
+    "created_at",
+    "email",
+    "name",
+    "gender",
+    "shirt_size",
     "special_needs",
     "dietary_restrictions",
     "updated_at"
@@ -335,12 +250,10 @@ hacker_form = collections.OrderedDict([
     ("background", master['background']),
     ("github", master['github']),
     ("website", master['website']),
-    ("team_name", master['team_name']),
     ("needs_reimbursement", master['needs_reimbursement']),
     ("preferred_travel_method", master['preferred_travel_method']),
-    ("team_name", master['team_name']),
-    ("accepts_mlh_code", master['accepts_mlh_code']),
-    ("accepts_mlh_release", master['accepts_mlh_release']),
+    ("attends_conference", master['attends_conference']),
+    ("attends_hackathon", master['attends_hackathon']),
 ])
 
 # The MLH View form.  Same template as above, but
@@ -348,12 +261,7 @@ hacker_form = collections.OrderedDict([
 # Edit this to determine what data from MLH should be shown in the registration form.
 mlh_form = collections.OrderedDict([
     ("email", master["email"]),
-    ("first_name", master["first_name"]),
-    ("last_name", master["last_name"]),
-    ("gender", master["gender"]),
-    ("phone_number", master["phone_number"]),
-    ("school_name", master["school_name"]),
-    ("date_of_birth", master["date_of_birth"]),
+    ("name", master["name"]),
     ("shirt_size", master["shirt_size"]),
     ("special_needs", master["special_needs"]),
     ("dietary_restrictions",master["dietary_restrictions"]),
@@ -369,7 +277,7 @@ def validate(user, update_dict, updatable_dict):
     update_dict: key-value pairs to set
     updatable_dict: a dict from above with keys:
         editable,
-        always, 
+        always,
         formtype
     """
     status=True
@@ -403,7 +311,7 @@ def validate(user, update_dict, updatable_dict):
                 and constraints['editable']
                 ):
                 pass
-            else: 
+            else:
                 status = False
                 invalid_key = key
                 invalid_value = value
@@ -413,7 +321,7 @@ def validate(user, update_dict, updatable_dict):
             # Length Check - make sure the length is OK
 
             if constraints['max_length'] >= 0:
-                
+
                 # Max length should be checked.
                 if len(value) <= constraints['max_length']:
                     pass
@@ -471,7 +379,7 @@ def validate(user, update_dict, updatable_dict):
             status = False
             invalid_key = key
             invalid_value = value
-            reason = "Specified field does not exist"   
+            reason = "Specified field does not exist"
 
     response = {
         "action": "validate",
@@ -480,7 +388,7 @@ def validate(user, update_dict, updatable_dict):
         "invalid_value": invalid_value,
         "reason": reason
     }
-    
+
     if not status:
         print(response)
 

@@ -5,24 +5,24 @@
 
   <div class="container">
 
-    <h1>Complete your application</h1>
+    <h2>Complete your application</h2>
     <p>Fill out a few more questions below so we can get to know you!  Required fields are marked with an asterisk (*)</p>
 
     <!-- MLH Section -->
     <div class="column mlh">
       {% for field_id, data in mlh_data.items() %}
         <label>{{ data['friendly_name'] }}
-          <span class='required-asterisk' 
+          <span class='required-asterisk'
             style="display:{{"inline" if data['required'] else "none"}};">*</span>
           <input type="{{ data['formtype'] }}" class="form-control big" id="{{ field_id }}" name="{{ field_id }}" value="{{ data['value'] }}" placeholder="{{ data['placeholder'] }}" {{ "" if data['editable'] else "disabled"}} {{ "required" if data['required'] else ""}}>
-        </label>      
+        </label>
       {% endfor %}
     </div>
 
     <!-- HackNC Section -->
     <div class="column">
-      <label>Resume Upload
-        <p class="help-text">{{ "You've uploaded a resume." if current_user.resume_location }}</p>
+      <label>Image Upload
+        <p class="help-text">{{ "You've uploaded an image." if current_user.resume_location }}</p>
         <input type="file" class="form-control big" name="resume">
       </label>
       {% for field_id, data in form_data.items() %}
@@ -32,23 +32,23 @@
         > -->
         <label title="{{ field_id}}">
         {{ data['friendly_name'] if data['formtype'] != 'checkbox' else '' }}
-        <span class='required-asterisk' 
+        <span class='required-asterisk'
           style="display:{{"inline" if data['required'] and not data['formtype'] == 'checkbox' else "none"}};">*</span>
-          
+
           {% if data['formtype'] == 'textarea' %}
             <p class="help-text">{{ data['help_text']}}</p>
-            <textarea class="form-control big" id="{{ field_id }}" name="{{ field_id }}" rows="3" pattern="{{data['pattern']}}" placeholder="{{ data['placeholder'] }}" 
+            <textarea class="form-control big" id="{{ field_id }}" name="{{ field_id }}" rows="3" pattern="{{data['pattern']}}" placeholder="{{ data['placeholder'] }}"
                 {{ 'disabled' if not data['editable'] else ''}} {{ "required" if data['required'] else ""}}>{{ data['value'] }}</textarea>
-          
+
           {% elif data['formtype'] == 'dropdown' %}
             <select name="{{ field_id }}" {{ "required" if data['required'] else '' }}>
-              <option class="muted" value="" disabled 
+              <option class="muted" value="" disabled
               {{ "selected" if not current_user[field_id] or current_user[field_id].length == 0 }}>{{data['help_text']}}</option>
               {% for option in data['options'] %}
-                <option value="{{ option }}" 
+                <option value="{{ option }}"
                   {{ "selected" if current_user[field_id] == option else "" }}>{{ option }}</option>
               {% endfor %}
-            
+
             </select>
           {% elif data['formtype'] == 'checkbox' %}
             <br>
@@ -64,29 +64,29 @@
             <br>
           {% elif data['formtype'] == 'date' %}
             <p class="help-text">{{ data['help_text']}}</p>
-              <input type="{{ data['formtype'] }}" class="form-control big" id="{{ field_id }}" name="{{ field_id }}" value="{{  data['value'] }}" placeholder="{{ data['placeholder'] }}" 
-                {{ 'disabled' if not data['editable'] else ''}} 
+              <input type="{{ data['formtype'] }}" class="form-control big" id="{{ field_id }}" name="{{ field_id }}" value="{{  data['value'] }}" placeholder="{{ data['placeholder'] }}"
+                {{ 'disabled' if not data['editable'] else ''}}
                 {{ "required" if data['required'] else ""}}>
 
           {% elif data['formtype'] == 'info' %}
             <p class="help-text">{{ data['help_text']}}</p>
           {% else %}
             <p class="help-text">{{ data['help_text']}}</p>
-            <input type="{{ data['formtype'] }}" class="form-control big" id="{{ field_id }}" name="{{ field_id }}" value="{{  data['value'] }}" pattern="{{data['pattern']}}" placeholder="{{ data['placeholder'] }}" 
-              {{ 'disabled' if not data['editable'] else ''}} 
+            <input type="{{ data['formtype'] }}" class="form-control big" id="{{ field_id }}" name="{{ field_id }}" value="{{  data['value'] }}" pattern="{{data['pattern']}}" placeholder="{{ data['placeholder'] }}"
+              {{ 'disabled' if not data['editable'] else ''}}
               {{ "required" if data['required'] else ""}}>
-          
+
           {% endif %}
         </label>
       {% endfor %}
-      
+
       <div class="team">
       <!-- <h2>Team</h2>
         {% for teammate in teammates %}
         {{ teammate }}<br>
         {% endfor %} -->
       </div>
-    
+
       </label>
       <button onclick="validate()" class="big" type="submit">
         {{ "Submit!" if current_user.is_new else "Update" }}

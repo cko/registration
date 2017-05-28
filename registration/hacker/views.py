@@ -32,10 +32,10 @@ def apply():
         if resume_success:
             user.set_resume_location(resume_success['filename'])
             flash("File uploaded")
-        
+
         # Then, the rest of the update
         update_success = user.update(update_dict, updatable_dictionary)
-        
+
         if update_success['status'] == "success":
             flash("Application submitted.  You may submit as often as you wish while applications are open.")
         else:
@@ -51,7 +51,6 @@ def apply():
         "apply.html",
         mlh_data=user.fill_form(forms.mlh_form),
         form_data=user.fill_form(forms.hacker_form),
-        teammates=user.get_teammates(),
         allowed_extensions=settings.ALLOWED_EXTENSIONS
     )
 
@@ -69,10 +68,10 @@ def me():
             "team_mates": user.get_teammates()
         })
     elif request.method == "POST":
-        
+
         updatable_dictionary = utilities.merge_two_dicts(
             forms.hacker_form, forms.mlh_form)
-        
+
         update_success = user.update(request.form.to_dict(), updatable_dictionary)
         return jsonify(**{
             "action": update_success,

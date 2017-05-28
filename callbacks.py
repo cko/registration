@@ -1,5 +1,5 @@
 # Usage: import this from wherever you like, but be aware that
-# this code is not part of the registration app, and not required to function.  
+# this code is not part of the registration app, and not required to function.
 # It is, rather, more like runserver.py - the user implementation of registration.
 
 from registration import triggers, settings  # I like to keep all my secrets in settings.py
@@ -14,24 +14,24 @@ sp = SparkPost(settings.SPARKPOST['secret_key'])
 @triggers.new_user
 def say_hello(user):
     """
-    This is an example of a callback.  
+    This is an example of a callback.
     Decorate it with trigger.new_user to get called when new users are created.
 
     :param user: An instance of models.User
     :returns: None
     """
-    print('NEW USER: ' + user.first_name)
+    print('NEW USER: ' + user.name)
 
 # Send email.  When a new user is created, send them a friendly welcome email
 @triggers.new_user
 def send_welcome(user):
     # FIXME
-    print(response)
+      print("FIXME Messaging")
 
 # Feed the new user into slack
 @triggers.new_user
 def send_slack(user):
-    data = {"text": user.first_name + " " + user.last_name + " (" + user.email + ") registered for HackNC.\n<https://my.hacknc.com/admin/user/" + str(user.user_id) + "| View Application>"}
+    data = {"text": user.name + " (" + user.email + ") registered for NixCon 2017.\n<https://my.hacknc.com/admin/user/" + str(user.user_id) + "| View Application>"}
     r = requests.post(settings.SLACK['webhook_url'],data=json.dumps(data))
     print("Slack Reply: " + r.text)
 
