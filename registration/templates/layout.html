@@ -1,11 +1,13 @@
 <!doctype html>
 <head>
-    <title>My HackNC</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <title>NixCon 2017 - Registration</title>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='materialize/css/materialize.min.css') }}"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/default.css') }}"  media="screen,projection"/>
     <link rel="shortcut icon" type="image/ico" href="/static/img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<div class="page">
+<body>
+<div id="content">
 
     <section class="flashed-messages">
       {% for message in get_flashed_messages() %}
@@ -37,7 +39,5 @@
       {% block body %}{% endblock %}
     </section>
 
-    <footer class="footer">
-      <!-- <img class="logo" src="{{ url_for('static', filename='img/title.png') }}"/> -->
-    </footer>
 </div>
+</body>

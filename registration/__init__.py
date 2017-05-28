@@ -12,7 +12,7 @@ from sqlalchemy.engine.url import URL
 from flask_login import LoginManager, current_user, login_user, logout_user
 from flask_cors import CORS
 # modules
-from . import mymlh
+from . import github
 from . import models
 from . import settings
 from . import utilities
@@ -41,7 +41,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 # Load MLH shim
-mlh_shim = mymlh.MlhShim(
+mlh_shim = github.MlhShim(
     settings.MYMLH["app_id"],
     settings.MYMLH["secret"],
     settings.MYMLH["redirect_uri"]
@@ -62,7 +62,7 @@ def index():
     else:
         return jsonify(action="unknown")
 
-# 
+#
 # Login handlers
 #
 
@@ -114,13 +114,13 @@ def login():
     if 'next' in request.cookies:
         if request.cookies['next'] in settings.ALLOWED_PAGES:
             nxt = request.cookies['next']
-    
+
     # There should be a "code" in the url string
     try:
         auth_code = request.args.get("code")
     except:
         return redirect(url_for("index"))
-    
+
     # The code should be a valid auth token.
     try:
         user_dict = mlh_shim.get_user(auth_code)
@@ -144,9 +144,9 @@ def login():
         print(re)
         return redirect(url_for("logout"))
 
-# 
+#
 # Helpers
-# 
+#
 
 def allowed_file(filename):
     return '.' in filename \
@@ -157,7 +157,7 @@ def secure_store(requests_files, user, form_file_name):
     if form_file_name not in requests_files:
         # User gave no file.  That's fine.
         return False
-    
+
     else:
         file = request.files[form_file_name]
         # if user does not select file, browser also
@@ -165,7 +165,7 @@ def secure_store(requests_files, user, form_file_name):
         if file.filename == '':
             # User gave no file.  That's fine.
             return False
-        
+
         if file and allowed_file(file.filename):
             old_name, extension = os.path.splitext(file.filename)
             new_filename = "{fname}_{lname}_{email}_{filetype}{ext}".format(
